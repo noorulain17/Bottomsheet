@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 public typealias BottomsheetController = Bottomsheet.Controller
 typealias BottomsheetTransitionAnimator = Bottomsheet.TransitionAnimator
@@ -98,6 +99,47 @@ open class Bottomsheet {
         }
         
         // MARK: - Open method
+        
+        // Adds ContentViewController
+        
+        open func addContentsViewController(_ viewController: UIViewController) {
+            if let contentView = viewController.view {
+                containerView.addSubview(contentView)
+                contentView.translatesAutoresizingMaskIntoConstraints = false
+                let topConstraint = NSLayoutConstraint(item: contentView,
+                                                       attribute: .top,
+                                                       relatedBy: .equal,
+                                                       toItem: containerView,
+                                                       attribute: .top,
+                                                       multiplier: 1,
+                                                       constant: 0)
+                let rightConstraint = NSLayoutConstraint(item: contentView,
+                                                         attribute: .right,
+                                                         relatedBy: .equal,
+                                                         toItem: containerView,
+                                                         attribute: .right,
+                                                         multiplier: 1,
+                                                         constant: 0)
+                let leftConstraint = NSLayoutConstraint(item: contentView,
+                                                        attribute: .left,
+                                                        relatedBy: .equal,
+                                                        toItem: containerView,
+                                                        attribute: .left,
+                                                        multiplier: 1,
+                                                        constant: 0)
+                let bottomConstraint = NSLayoutConstraint(item: contentView,
+                                                          attribute: .bottom,
+                                                          relatedBy: .equal,
+                                                          toItem: containerView,
+                                                          attribute: .bottom,
+                                                          multiplier: 1,
+                                                          constant: 0)
+                containerView.addConstraints([topConstraint, leftConstraint, rightConstraint, bottomConstraint])
+                self.contentView = contentView
+                self.addChild(viewController)
+            }
+        }
+        
         // Adds UIToolbar
         open func addToolbar(_ configurationHandler: ((UIToolbar) -> Void)? = nil) {
             guard !hasBar else { fatalError("UIToolbar or UINavigationBar can only have one") }
@@ -349,17 +391,23 @@ open class Bottomsheet {
             containerView.backgroundColor = containerViewBackgroundColor
             state = .hide
         }
+        
         open override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
             adjustLayout()
         }
-        // Action
+
+        // MARK: - Action
+
         @objc open func present(_ sender: AnyObject? = nil) {
             state = .showAll
         }
         @objc open func dismiss(_ sender: AnyObject? = nil) {
             state = .hide
         }
+        
+        // MARK: - Gestures
+        
         @objc dynamic func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
             switch viewActionType {
             case .tappedPresent:
