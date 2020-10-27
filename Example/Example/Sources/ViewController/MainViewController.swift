@@ -16,8 +16,9 @@ final class MainViewController: UIViewController {
         case collectionViewIsScrollDisabledInSheet
         case tableView
         case tableViewToolbar
+        case contentViewController
         static var count: Int {
-            return 5
+            return 6
         }
         var description: String {
             switch self {
@@ -26,6 +27,7 @@ final class MainViewController: UIViewController {
             case .collectionViewIsScrollDisabledInSheet: return "CollectionView + Navigation (scroll disabled in sheet)"
             case .tableView: return "TableView"
             case .tableViewToolbar: return "TableView + Toolbar"
+            case .contentViewController: return "ContentViewController"
             }
         }
     }
@@ -83,7 +85,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             controller.overlayBackgroundColor = UIColor.black.withAlphaComponent(0.6)
             controller.addContentsView(contentView)
         case .collectionView:
-            controller.addNavigationbar { navigationBar in
+            controller.addNavigationBar { navigationBar in
                 let item = UINavigationItem(title: "title")
                 let rightButton = UIBarButtonItem(title: "dismiss", style: .plain, target: controller, action: #selector(BottomsheetController.dismiss(_:)))
                 item.rightBarButtonItem = rightButton
@@ -97,7 +99,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.cellIdentifier)
                 collectionView.backgroundColor = .white
                 collectionView.contentInset.top = 64
-                collectionView.scrollIndicatorInsets.top = 64
                 let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
                 let width = (UIScreen.main.bounds.width - 30) / 2
                 layout?.itemSize = CGSize(width: width, height: width)
@@ -109,7 +110,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             controller.overlayBackgroundColor = UIColor.black.withAlphaComponent(0.6)
             controller.initializeHeight = UIScreen.main.bounds.height / 2
         case .collectionViewIsScrollDisabledInSheet:
-            controller.addNavigationbar { navigationBar in
+            controller.addNavigationBar { navigationBar in
                 let item = UINavigationItem(title: "title")
                 let rightButton = UIBarButtonItem(title: "dismiss", style: .plain, target: controller, action: #selector(BottomsheetController.dismiss(_:)))
                 item.rightBarButtonItem = rightButton
@@ -123,7 +124,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.cellIdentifier)
                 collectionView.backgroundColor = .white
                 collectionView.contentInset.top = 64
-                collectionView.scrollIndicatorInsets.top = 64
                 let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
                 let width = (UIScreen.main.bounds.width - 30) / 2
                 layout?.itemSize = CGSize(width: width, height: width)
@@ -135,7 +135,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             controller.overlayBackgroundColor = UIColor.black.withAlphaComponent(0.6)
             controller.initializeHeight = UIScreen.main.bounds.height / 2
         case .tableView:
-            controller.addNavigationbar { navigationBar in
+            controller.addNavigationBar { navigationBar in
                 let item = UINavigationItem(title: "title")
                 let rightButton = UIBarButtonItem(title: "dismiss", style: .plain, target: controller, action: #selector(BottomsheetController.dismiss(_:)))
                 item.rightBarButtonItem = rightButton
@@ -150,7 +150,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.estimatedRowHeight = 100
                 tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
                 tableView.contentInset.top = 64
-                tableView.scrollIndicatorInsets.top = 64
             }
             controller.viewActionType = .tappedDismiss
             controller.overlayBackgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -168,11 +167,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.estimatedRowHeight = 100
                 tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
                 tableView.contentInset.top = 64
-                tableView.scrollIndicatorInsets.top = 64
             }
             controller.viewActionType = .swipe
             controller.overlayBackgroundColor = UIColor.red.withAlphaComponent(0.6)
             controller.initializeHeight = UIScreen.main.bounds.height / 2
+        case .contentViewController:
+            if #available(iOS 13.0, *) {
+                let storyboard = UIStoryboard(name: "MainViewController", bundle: nil)
+                let contentViewController = storyboard.instantiateViewController(identifier: "ContentViewController")
+                controller.addContentsViewController(contentViewController)
+                controller.addToolbar { toolbar in
+                    let dismiss = UIBarButtonItem(title: "dismiss", style: .plain, target:controller,  action: #selector(BottomsheetController.dismiss(_:)))
+                    let present = UIBarButtonItem(title: "present", style: .plain, target:controller,  action: #selector(BottomsheetController.present(_:)))
+                    toolbar.items = [dismiss, present]
+                }
+                controller.viewActionType = .swipe
+                controller.overlayBackgroundColor = UIColor.red.withAlphaComponent(0.6)
+                controller.initializeHeight = UIScreen.main.bounds.height / 2
+            }
         }
         DispatchQueue.main.async {
             self.present(controller, animated: true, completion: nil)

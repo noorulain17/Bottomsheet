@@ -18,7 +18,7 @@ struct Assets {
             return countableRange.count
         }
         private init() {
-            objects = countableRange.map { String($0) }.flatMap { UIImage(named: $0) }
+            objects = countableRange.map { String($0) }.compactMap { UIImage(named: $0) }
         }
     }
 }

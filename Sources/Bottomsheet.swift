@@ -37,8 +37,8 @@ open class Bottomsheet {
             get { return overlayView.backgroundColor }
         }
         open var containerViewBackgroundColor = UIColor(white: 1, alpha: 1)
-        open let overlayView = UIView()
-        open let containerView = UIView()
+        public let overlayView = UIView()
+        public let containerView = UIView()
         // MARK: - Private property
         fileprivate let overlayViewPanGestureRecognizer: UIPanGestureRecognizer = {
             let gestureRecognizer = UIPanGestureRecognizer()
@@ -86,7 +86,7 @@ open class Bottomsheet {
             return (initializeHeight / 3, initializeHeight / 3)
         }
         private var statusBarHeight: CGFloat {
-            return UIApplication.shared.statusBarFrame.height
+            return self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         }
         fileprivate lazy var navigationBarHeight: CGFloat = {
             return UINavigationBar().intrinsicContentSize.height
@@ -179,8 +179,8 @@ open class Bottomsheet {
             self.bar = toolbar
         }
         
-        // Adds UINavigationbar
-        open func addNavigationbar(_ configurationHandler: ((UINavigationBar) -> Void)? = nil) {
+        // Adds UINavigationBar
+        open func addNavigationBar(_ configurationHandler: ((UINavigationBar) -> Void)? = nil) {
             guard !hasBar else { fatalError("UIToolbar or UINavigationBar can only have one") }
             let navigationBar = UINavigationBar()
             containerView.addSubview(navigationBar)
@@ -386,7 +386,6 @@ open class Bottomsheet {
         // Life cycle
         open override func viewDidLoad() {
             super.viewDidLoad()
-            automaticallyAdjustsScrollViewInsets = false
             overlayView.backgroundColor = overlayBackgroundColor
             containerView.backgroundColor = containerViewBackgroundColor
             state = .hide
@@ -545,7 +544,7 @@ private extension BottomsheetController {
             containerView.bringSubviewToFront(bar)
         }
         configureGesture()
-        scrollView?.setContentOffset(CGPoint(x: 0, y: -(scrollView?.scrollIndicatorInsets.top ?? 0)), animated: false)
+        scrollView?.setContentOffset(CGPoint(x: 0, y: -(scrollView?.verticalScrollIndicatorInsets.top ?? 0)), animated: false)
         state = .show
     }
     func configureGesture() {
