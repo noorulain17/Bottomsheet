@@ -22,3 +22,6 @@ DerivedData
 
 *.xccheckout
 sort-Xcode-project-file
+
+# SPM
+.build/*
