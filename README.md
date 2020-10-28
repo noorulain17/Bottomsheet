@@ -5,7 +5,12 @@ Component which presents a dismissible view from the bottom of the screen
 [![CocoaPods Compatible](http://img.shields.io/cocoapods/v/NABottomsheet.svg?style=flat)](http://cocoadocs.org/docsets/NABottomsheet)
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 
-<img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample1.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample2.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample3.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample4.gif" width="320" >
+<img src="https://github.com/hryk224/Bottomsheet/wiki/images/sample1.gif" width="320">
+<img src="https://github.com/hryk224/Bottomsheet/wiki/images/sample2.gif" width="320">
+<img src="https://github.com/hryk224/Bottomsheet/wiki/images/sample3.gif" width="320">
+<img src="https://github.com/hryk224/Bottomsheet/wiki/images/sample4.gif" width="320">
+<img src="https://raw.githubusercontent.com/noorulain17/NABottomsheet/master/Screenshots/NABottomSheet1.png" width="320">
+<img src="https://raw.githubusercontent.com/noorulain17/NABottomsheet/master/Screenshots/NABottomSheet2.png" width="320">
 
 ## Requirements
 - iOS 13.0+
