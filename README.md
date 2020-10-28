@@ -1,11 +1,11 @@
-# BottomSheet
+# NABottomsheet
 
 Component which presents a dismissible view from the bottom of the screen
 
-[![CocoaPods Compatible](http://img.shields.io/cocoapods/v/Bottomsheet.svg?style=flat)](http://cocoadocs.org/docsets/Bottomsheet)
+[![CocoaPods Compatible](http://img.shields.io/cocoapods/v/NABottomsheet.svg?style=flat)](http://cocoadocs.org/docsets/NABottomsheet)
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 
-<img src="https://github.com/noorulain17/Bottomsheet/wiki/images/sample1.gif" width="320" > <img src="https://github.com/noorulain17/Bottomsheet/wiki/images/sample2.gif" width="320" > <img src="https://github.com/noorulain17/Bottomsheet/wiki/images/sample3.gif" width="320" > <img src="https://github.com/noorulain17/Bottomsheet/wiki/images/sample4.gif" width="320" >
+<img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample1.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample2.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample3.gif" width="320" > <img src="https://github.com/noorulain17/NABottomsheet/wiki/images/sample4.gif" width="320" >
 
 ## Requirements
 - iOS 13.0+
@@ -22,15 +22,15 @@ If you are using Xcode 11 or later:
  1. Click `File`
  2. `Swift Packages`
  3. `Add Package Dependency...`
- 4. Specify the git URL for `Bottomsheet`.
+ 4. Specify the git URL for `NABottomsheet`.
 
 ```swift
-https://github.com/noorulain17/Bottomsheet
+https://github.com/noorulain17/NABottomsheet
 ```
 
 ### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate `Bottomsheet`  manually by directly adding `Bottomsheet.swift` file in your project.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate `NABottomsheet`  manually by directly adding `Bottomsheet.swift` file in your project.
 
 
 #### CocoaPods
@@ -43,13 +43,13 @@ Adding the following to your `Podfile` and running `pod install`:
 
 ```Ruby
 use_frameworks!
-pod "Bottomsheet"
+pod "NABottomsheet"
 ```
 
 ### Import
 
 ```Swift
-import Bottomsheet
+import NABottomsheet
 ```
 
 ## Usage

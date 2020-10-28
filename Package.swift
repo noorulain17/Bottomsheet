@@ -1,10 +1,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "Bottomsheet",
+    name: "NABottomsheet",
     products: [
         .library(
-            name: "Bottomsheet",
+            name: "NABottomsheet",
             targets: ["Bottomsheet"]
         )
     ],

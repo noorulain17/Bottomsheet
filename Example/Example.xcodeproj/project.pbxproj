@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0980F02548763D007B9F41 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0980EF2548763D007B9F41 /* ContentViewController.swift */; };
-		ED7B75C31D90EE4C007D6FD8 /* Bottomsheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7B75C21D90EE46007D6FD8 /* Bottomsheet.framework */; };
+		4E64792125499A4200AFC096 /* Bottomsheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7B75C21D90EE46007D6FD8 /* Bottomsheet.framework */; };
 		ED7B75C41D90EE4C007D6FD8 /* Bottomsheet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED7B75C21D90EE46007D6FD8 /* Bottomsheet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED99E7E21E5D8773001A71E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED99E7E01E5D8773001A71E8 /* Assets.xcassets */; };
 		ED99E7E71E5D8782001A71E8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99E7E51E5D8782001A71E8 /* CollectionViewCell.swift */; };
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7B75C31D90EE4C007D6FD8 /* Bottomsheet.framework in Frameworks */,
+				4E64792125499A4200AFC096 /* Bottomsheet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
